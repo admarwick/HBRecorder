@@ -169,11 +169,11 @@ public class ScreenRecordService extends Service {
             }
             //Set notification title if developer did not
             if (notificationTitle == null || notificationTitle.equals("")) {
-                notificationTitle = getString(R.string.stop_recording_notification_title);
+                notificationTitle = "Recording your screen";  //getString(R.string.stop_recording_notification_title);
             }
             //Set notification description if developer did not
             if (notificationDescription == null || notificationDescription.equals("")) {
-                notificationDescription = getString(R.string.stop_recording_notification_message);
+                notificationDescription = "Drag down to stop the recording";//getString(R.string.stop_recording_notification_message);
             }
 
             //Notification
@@ -210,7 +210,7 @@ public class ScreenRecordService extends Service {
 
                     } else {
                         //Modify notification badge
-                        notification = new Notification.Builder(getApplicationContext(), channelId).setOngoing(true).setSmallIcon(R.drawable.icon).setContentTitle(notificationTitle).setContentText(notificationDescription).addAction(action).build();
+                        notification = new Notification.Builder(getApplicationContext(), channelId).setOngoing(true).setSmallIcon( android.R.drawable.presence_video_online).setContentTitle(notificationTitle).setContentText(notificationDescription).addAction(action).build();
                     }
                     startForeground(101, notification);
                 }
@@ -287,7 +287,7 @@ public class ScreenRecordService extends Service {
                         ResultReceiver receiver = intent.getParcelableExtra(ScreenRecordService.BUNDLED_LISTENER);
                         Bundle bundle = new Bundle();
                         bundle.putInt(ERROR_KEY, MAX_FILE_SIZE_REACHED_ERROR);
-                        bundle.putString(ERROR_REASON_KEY, getString(R.string.max_file_reached));
+                        bundle.putString(ERROR_REASON_KEY, "Max file size has been reached.");
                         if (receiver != null) {
                             receiver.send(Activity.RESULT_OK, bundle);
                         }
