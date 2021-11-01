@@ -1,9 +1,11 @@
 package com.hbisoft.hbrecorder;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -210,6 +212,7 @@ public class HBRecorder implements MyListener {
     }
 
     /*Start screen recording*/
+    @RequiresApi(api = Build.VERSION_CODES.M)
     public void startScreenRecording(Intent data, int resultCode, Activity activity) {
         this.resultCode = resultCode;
         this.activity = activity;
