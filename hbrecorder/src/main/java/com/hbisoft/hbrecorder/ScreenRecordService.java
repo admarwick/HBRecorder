@@ -516,10 +516,6 @@ public class ScreenRecordService extends Service {
             mMediaRecorder.setVideoFrameRate(videoFrameRate);
         }
 
-        // For preliminary testing of changes on video_bitrate branch
-        mMediaRecorder.setVideoEncodingBitRate(400000);
-        mMediaRecorder.setVideoFrameRate(30);
-
         // Catch approaching file limit
         if ( maxFileSize > NO_SPECIFIED_MAX_SIZE) {
             mMediaRecorder.setMaxFileSize(maxFileSize); // in bytes
